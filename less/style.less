@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap');
+@font-face {
+    font-family: 'pokemonClassic';
+    src: url("/resources/fonts/PokemonClassic.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+// variables
+@primary-color: #FF1B1C;
+@secondary-color: #FFFFFF;
+@primary-font: 'pokemonClassic', sans-serif;
+@secondary-font: 'Poppins', sans-serif;
+
+//maps
+#types-colors(){
+    fire: @primary-color;
+    water: rgb(56, 186, 206);
+    grass: rgb(127, 230, 96);
+    bug: rgb(212, 166, 51);
+    dragon: rgb(246, 150, 54);
+    electric: rgb(251, 227, 48);
+    fighting: rgb(152, 122, 86);
+    flying: rgb(190, 249, 251);
+    ghost: rgb(94, 94, 94);
+    ground: rgb(86, 60, 34);
+    ice: rgb(241, 255, 254);
+    normal: rgb(192, 192, 192);
+    poison: rgb(145, 11, 102);
+    psychic: rgb(249, 63, 225);
+    rock: rgb(83, 56, 21);    
+}
+
+
+// mixins
+.shadowed{
+    box-shadow: 0.2rem 0.2rem 0.5rem rgb(166, 162, 162);
+}
+
+
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    font-family: @secondary-font;
+}
+
+header{
+    height: 10vh;
+    background-color: @primary-color;
+
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;  
+        
+        .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;           
+            margin-right: 1em;
+
+            transition: transform 0.15s ease-in;
+
+            &:hover{
+                transform: scale(110%);
+            }            
+        }
+        
+        & > h1{
+            font-family: @primary-font;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            color: @secondary-color;
+        }
+
+        .menu-desktop{
+            display: flex;
+            width: 20%;
+            justify-content: space-evenly;
+
+            .menu-desktop_choose{
+                .choose_ul{
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
+
+main{
+    height: 80vh;
+    background-color: darken(@secondary-color,10%);
+
+    .cards-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .card{
+            height: 90%;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;            
+        
+            article{
+                position: relative;
+                height: 80%;                
+                width: 100%;
+                background-color: @secondary-color;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                transition: transform 0.15s ease-in;
+                .shadowed();
+
+                &:hover{
+                    transform: scale(102%);
+
+                    .img-pokemon{
+                        transform: scale(120%);
+                    }
+                }
+
+                .name{
+                    display: flex;
+                    justify-content: space-between;
+                    text-transform: capitalize;
+                    z-index: 2;
+                    margin-bottom: 1.5em; 
+
+                    #name-h2{
+                        color: @secondary-color;
+                        font-size: 1em;
+                        margin-right: 0.7em;
+                        font-family: @primary-font;
+                    }
+
+                    .type{
+                        padding-top: 0.3em;   
+                        
+                        &.fire{
+                            background-color: white;                            
+                        }
+                    }
+                }
+                
+                .banner{
+                    position: absolute;
+                    width: 100%;
+                    height: 13%;
+                    background-color: @primary-color;
+                    top: 0%;
+                    left: 0;
+                    border-radius: 1rem 1rem 0 0;
+                    z-index: 1;
+
+                }
+
+
+                .img-container{
+                    width: 90%;
+                    height: 50%;
+                    text-align: center;
+
+                    .img-pokemon{
+                        object-fit: contain;
+                        width: 100%;
+                        height: 100%;
+                        transition: transform 0.15s ease-in;
+                    }
+                }
+
+                .stats{
+                    text-align: center;
+                    width: 90%;
+                    display: grid;
+                    grid-template-columns: 50% 50%;
+                    background-color: darken(@secondary-color,10%);
+                    border-radius: 1rem;
+                    padding: 10px;
+                    font-size: 0.8em;                    
+                }
+            }
+
+            button{
+                height: 3em;
+                width: 50%;
+                cursor: pointer;
+                border-radius: 0.5rem;
+                border: none;
+                background-color: @secondary-color;
+                font-family: @primary-font;
+                transition: all 0.10s ease-in;
+
+                &:hover{
+                    background-color: @primary-color;
+                    color: @secondary-color;
+                }
+                
+            }
+
+            &.fire{
+                .banner, button:hover{
+                    background-color: #types-colors[fire];                    
+                }
+            }
+            &.water{
+                .banner, button:hover{
+                    background-color: #types-colors[water];                    
+                }
+            }
+
+            &.grass{
+                .banner, button:hover{
+                    background-color: #types-colors[grass];                    
+                }
+            }
+            &.bug{
+                .banner, button:hover{
+                    background-color: #types-colors[bug];                    
+                }
+            }
+            &.dragon{
+                .banner, button:hover{
+                    background-color: #types-colors[dragon];                    
+                }
+            }
+            &.electric{
+                .banner, button:hover{
+                    background-color: #types-colors[electric];                    
+                }
+            }
+            &.fighting{
+                .banner, button:hover{
+                    background-color: #types-colors[fighting];                    
+                }
+            }
+            &.ghost{
+                .banner, button:hover{
+                    background-color: #types-colors[ghost];                    
+                }
+            }
+            &.ground{
+                .banner, button:hover{
+                    background-color: #types-colors[ground];                    
+                }
+            }
+            &.ice{
+                .banner, button:hover{
+                    background-color: #types-colors[ice];                    
+                }
+            }
+            &.normal{
+                .banner, button:hover{
+                    background-color: #types-colors[normal];                    
+                }
+            }
+            &.poison{
+                .banner, button:hover{
+                    background-color: #types-colors[poison];                    
+                }
+            }
+            &.psychic{
+                .banner, button:hover{
+                    background-color: #types-colors[psychic];                    
+                }
+            }
+            &.rock{
+                .banner, button:hover{
+                    background-color: #types-colors[rock];                    
+                }
+            }           
+
+        }
+        
+    }
+}
+
+footer{
+    height: 10vh;
+    background-color: @primary-color;
+    text-align: center;
+
+    // text effect
+    .ml11 {
+        font-family: @primary-font;
+        font-size: 0.8em;
+        display: block;
+        line-height: 10vh;
+      }
+      
+      .ml11 .text-wrapper {
+        position: relative;
+        display: inline-block;
+       
+      }
+      
+      .ml11 .letter {
+        display: inline-block;
+        line-height: 1em;
+      }
+}

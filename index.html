@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose your starter!</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <header>
+        <!-- Desktop Navigation -->
+        <nav>
+            <div class="logo">
+                <img style="width: 40px;" src="./resources/Poké_Ball_icon.svg.png" alt="">
+            </div>
+            <h1>Choose your starter!</h1>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cards-container">
+            <template id="template-card">
+                <div class="card">
+                    <article id="#card-1">
+                        <div class="banner"></div>
+                        <div class="name">
+                            <h2 id="name-h2">Bulbasaur</h2>
+                            <p class="type">type</p>
+                        </div>
+                        <div class="img-container">
+                            <img class="img-pokemon" src="" alt="">
+                        </div>
+                        <div class="stats">
+                            <h3>Hp: </h3><p>100</p>
+                            <h3>Ataque: </h3><p>78</p>
+                            <h3>Especial: </h3><p>67</p>
+                            <h3>Defensa: </h3><p>100</p>
+    
+                        </div>
+                    </article>
+                    <button>CHOOSE</button>
+                </div>
+            </template>            
+        </div>
+    </main>
+
+    <footer>
+        <h1 class="ml11">
+            <span class="text-wrapper">              
+              <span class="letters">Made by juampimichelli</span>
+            </span>
+        </h1>
+          
+    </footer>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
