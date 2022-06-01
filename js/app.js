@@ -1,6 +1,9 @@
 // Number of CARDS that will be rendered
 const CARDS = 3;
 
+// Make an array of chosen pokemons or grab it from localStorage
+let pokemonsId = new Array();
+
 // Function taken from MDN to generate a random int between two values
 const getRandomInt = (min, max) => {
     return Math.floor((Math.random()*(max-min)) + min);
@@ -14,6 +17,10 @@ document.addEventListener('DOMContentLoaded',()=>{
       randoms.push(getRandomInt(1,151));
     }
     fetchPokemons(randoms);
+
+    // bring chosen pokemons
+    let storedPokemons = JSON.parse(localStorage.getItem('chosenPokemons')); 
+    pokemonsId = storedPokemons;
 })
 
 const fetchPokemons = async(randoms) => {
@@ -33,7 +40,7 @@ const fetchPokemons = async(randoms) => {
                 name: data.name,
                 sprite: data.sprites.front_default,
                 type: data.types[0].type.name,
-                // sprite: data.sprites.other['official-artwork'].front_default,
+                id: data.id,
                 stats: {
                     hp: data.stats[0].base_stat,
                     attack: data.stats[1].base_stat,
@@ -82,6 +89,18 @@ const renderPokemons = (pokemons) => {
     <h3>Ataque: </h3><p>${pokemons[i].stats.attack}</p>
     <h3>Especial: </h3><p>${pokemons[i].stats.special}</p>
     <h3>Defensa: </h3><p>${pokemons[i].stats.defense}</p>`  
+
+    // Select button and apply event
+    const btnChoose = clones[i].querySelector('.btn-choose');
+
+    btnChoose.addEventListener("click", ()=>{
+      // agregar pokemon id a array pokemones
+      pokemonsId.push(pokemons[i].id)
+      localStorage.setItem('chosenPokemons',JSON.stringify(pokemonsId));
+
+      // reload page
+      document.location.reload();
+    })
     
     // add type class depending on pokemon type
     switch(pokemons[i].type){
@@ -158,3 +177,12 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 6000
   });
+
+  
+
+  
+ 
+
+
+
+  

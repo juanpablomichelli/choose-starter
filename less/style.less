@@ -38,7 +38,6 @@
     box-shadow: 0.2rem 0.2rem 0.5rem rgb(166, 162, 162);
 }
 
-
 *{
     box-sizing: border-box;
     margin: 0%;
@@ -58,6 +57,35 @@ header{
         justify-content: center;
         align-items: center;
         height: 100%;  
+
+        .bag-container{
+            position: absolute;
+            width: 2em;
+            right: 2em;
+
+            .pokemon-count{
+                position: absolute;
+                width: 20px;
+                right: 2.5em;
+                text-align: center;
+                background-color: white;
+                border-radius: 0.5em;
+
+                p{
+                    font-family: @secondary-font;
+                    font-size: 0.8em;
+                }
+            }
+
+            .bag-img{
+                width: 100%;
+                transition: transform 0.15s ease-in;
+
+                &:hover{
+                    transform: scale(110%);
+                } 
+            }
+        }
         
         .logo{
             display: flex;
@@ -214,7 +242,7 @@ main{
 
             &.fire{
                 .banner, button:hover{
-                    background-color: #types-colors[fire];                    
+                    background-color: #types-colors[fire];                
                 }
             }
             &.water{
@@ -280,7 +308,7 @@ main{
             }
             &.rock{
                 .banner, button:hover{
-                    background-color: #types-colors[rock];                    
+                    background-color: #types-colors[rock];    
                 }
             }           
 

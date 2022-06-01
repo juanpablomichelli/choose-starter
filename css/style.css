@@ -53,6 +53,30 @@ header nav {
   align-items: center;
   height: 100%;
 }
+header nav .bag-container {
+  position: absolute;
+  width: 2em;
+  right: 2em;
+}
+header nav .bag-container .pokemon-count {
+  position: absolute;
+  width: 20px;
+  right: 2.5em;
+  text-align: center;
+  background-color: white;
+  border-radius: 0.5em;
+}
+header nav .bag-container .pokemon-count p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8em;
+}
+header nav .bag-container .bag-img {
+  width: 100%;
+  transition: transform 0.15s ease-in;
+}
+header nav .bag-container .bag-img:hover {
+  transform: scale(110%);
+}
 header nav .logo {
   display: flex;
   justify-content: center;
