@@ -4,6 +4,9 @@ const CARDS = 3;
 // Make an array of chosen pokemons or grab it from localStorage
 let pokemonsId = new Array();
 
+// select bag counter
+const counter = document.querySelector('.pokemon-count p');
+
 // Function taken from MDN to generate a random int between two values
 const getRandomInt = (min, max) => {
     return Math.floor((Math.random()*(max-min)) + min);
@@ -24,6 +27,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(storedPokemons !== null){
       pokemonsId = storedPokemons;
     }
+
+    counter.innerHTML = pokemonsId.length;
+
 })
 
 const fetchPokemons = async(randoms) => {
@@ -96,12 +102,17 @@ const renderPokemons = (pokemons) => {
     const btnChoose = clones[i].querySelector('.btn-choose');
 
     btnChoose.addEventListener("click", ()=>{
-      // agregar pokemon id a array pokemones
-      pokemonsId.push(pokemons[i].id)
-      localStorage.setItem('chosenPokemons',JSON.stringify(pokemonsId));
 
-      // reload page
-      document.location.reload();
+      if(pokemonsId.length < 6){
+        // agregar pokemon id a array pokemones
+        pokemonsId.push(pokemons[i].id)
+        localStorage.setItem('chosenPokemons',JSON.stringify(pokemonsId));
+        counter.innerHTML = pokemonsId.length;
+  
+        // reload page
+        document.location.reload();
+      }
+      else alert("No se pueden agregar mas pokemones");
     })
     
     // add type class depending on pokemon type
@@ -145,6 +156,8 @@ const renderPokemons = (pokemons) => {
     cardContainerFlex.appendChild(fragments[i])    
   }
 }
+
+
 
 // text animation
 // Wrap every letter in a span

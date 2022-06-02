@@ -13,7 +13,7 @@
         <!-- Desktop Navigation -->
         <nav>
             <div class="logo">
-                <img style="width: 40px;" src="./resources/Poké_Ball_icon.svg.png" alt="">
+                <a href="./index.html"><img style="width: 40px;" src="./resources/Poké_Ball_icon.svg.png" alt=""></a>
             </div>
             <h1>Choose your starter!</h1>
 
@@ -30,7 +30,30 @@
 
     <main>
         <div class="pokemons-data">
-
+        </div>
+        <div class="cards-container">
+            <template id="template-card">
+                <div class="card">
+                    <article id="#card-1">
+                        <div class="banner"></div>
+                        <div class="name">
+                            <h2 id="name-h2">Bulbasaur</h2>
+                            <p class="type">type</p>
+                        </div>
+                        <div class="img-container">
+                            <img class="img-pokemon" src="" alt="">
+                        </div>
+                        <div class="stats">
+                            <h3>Hp: </h3><p>100</p>
+                            <h3>Ataque: </h3><p>78</p>
+                            <h3>Especial: </h3><p>67</p>
+                            <h3>Defensa: </h3><p>100</p>
+    
+                        </div>
+                    </article>
+                    <button class="btn-remove">REMOVE</button>
+                </div>
+            </template>            
         </div>
     </main>
 

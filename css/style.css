@@ -84,6 +84,9 @@ header nav .logo {
   margin-right: 1em;
   transition: transform 0.15s ease-in;
 }
+header nav .logo a {
+  display: flex;
+}
 header nav .logo:hover {
   transform: scale(110%);
 }
