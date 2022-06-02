@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     // bring chosen pokemons
     let storedPokemons = JSON.parse(localStorage.getItem('chosenPokemons')); 
-    pokemonsId = storedPokemons;
+
+    if(storedPokemons !== null){
+      pokemonsId = storedPokemons;
+    }
 })
 
 const fetchPokemons = async(randoms) => {
@@ -33,7 +36,6 @@ const fetchPokemons = async(randoms) => {
             
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${randoms[i]}`);
             const data = await res.json();
-            console.log(data)
 
             // Create a Pokemon object with api's data
             const pokemon = {
@@ -178,7 +180,7 @@ anime.timeline({loop: true})
     delay: 6000
   });
 
-  
+
 
   
  
