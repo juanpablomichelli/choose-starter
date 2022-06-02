@@ -9,37 +9,29 @@ if(storedPokemons !== null){
 let chosenPokemons = new Array();
 
 // show chosen pokemons
-const showChosenPokemons = (pokemonsId) => {
+const showChosenPokemons = async(pokemonsId) => {
 
     // select data-div 
     const dataDiv = document.querySelector('.pokemons-data');
 
-    // create ul and li
+    // create ul
     const ul = document.createElement('ul');
-    const li = document.createElement('li');    
 
     // fetch chosen pokemons using their ID's located in pokemonsId array
-    pokemonsId.forEach(id => {
-        fetchChosenPokemons(id)
-    });
+    for (let i = 0; i < pokemonsId.length; i++) {
+        const pokemon = await fetchChosenPokemon(pokemonsId[i])      
+        chosenPokemons.push(pokemon); 
+    }
    
-    
+    console.log(chosenPokemons[0].name)
     
 
      // map chosen pokemons to li and append to ul
-     /* chosenPokemons.map(pokemon=>{
+    chosenPokemons.map(pokemon=>{
+        const li = document.createElement('li');    
         li.innerHTML = `${pokemon.name}`;
         ul.appendChild(li);
-    }) */
-
-
-    // here it logs
-    console.log(chosenPokemons)
-    
-    // here it doesnt log
-    // console.log(chosenPokemons[0])
-    
-    // ul.appendChild(li);
+    })
 
     // append ul to data-div
     dataDiv.appendChild(ul);
