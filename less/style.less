@@ -25,11 +25,12 @@
     flying: rgb(190, 249, 251);
     ghost: rgb(94, 94, 94);
     ground: rgb(86, 60, 34);
-    ice: rgb(241, 255, 254);
+    ice: linear-gradient(90deg, rgba(236,167,221,1) 0%, rgba(255,255,255,1) 50%, rgba(88,198,221,1) 100%);
     normal: rgb(192, 192, 192);
     poison: rgb(145, 11, 102);
     psychic: rgb(249, 63, 225);
     rock: rgb(83, 56, 21);    
+    fairy: rgb(190, 13, 90);
 }
 
 
@@ -86,6 +87,20 @@ header{
                 } 
             }
         }
+
+        .go-home{
+            position: absolute;
+            width: 2em;
+            right: 2em;
+            .pokeball-img{
+                width: 100%;
+                transition: transform 0.15s ease-in;
+
+                &:hover{
+                    transform: scale(110%);
+                } 
+            }
+        }
         
         .logo{
             display: flex;
@@ -98,7 +113,7 @@ header{
             a{
                 display: flex;
             }
-            
+
             &:hover{
                 transform: scale(110%);
             }            
@@ -291,8 +306,11 @@ main{
                 }
             }
             &.ice{
+                .name > #name-h2, .name > p{
+                    color: black;
+                }
                 .banner, button:hover{
-                    background-color: #types-colors[ice];                    
+                    background: linear-gradient(90deg, rgba(88,198,221,1) 0%, rgba(255,255,255,1) 50%, rgba(88,198,221,1) 100%);
                 }
             }
             &.normal{
@@ -314,17 +332,60 @@ main{
                 .banner, button:hover{
                     background-color: #types-colors[rock];    
                 }
-            }           
+            }  
+            &.fairy{
+                .banner, button:hover{
+                    background-color: #types-colors[fairy];    
+                }
+            }            
 
         }
+
+        .empty-bag-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .empty-bag-text{
+                text-align: right;
+    
+                a{
+                    font-family: @primary-font;
+                    color: @primary-color;
+                }
+            }
+    
+            .missingno{
+                width: 20%;
+                filter: grayscale(1);
+                transition: transform 0.15s ease;
+
+                &:hover{
+                    transform: scale(110%);
+                    transform: rotate(8deg)
+                }
+            }
+        }
+
         
     }
 }
 
 footer{
-    height: 10vh;
     background-color: @primary-color;
-    text-align: center;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    position: relative;
+
+    a{
+        width: 18em;
+        height: 2em;
+        position: absolute;
+    }
 
     // text effect
     .ml11 {
@@ -332,16 +393,21 @@ footer{
         font-size: 0.8em;
         display: block;
         line-height: 10vh;
-      }
-      
-      .ml11 .text-wrapper {
-        position: relative;
-        display: inline-block;
-       
-      }
-      
-      .ml11 .letter {
-        display: inline-block;
-        line-height: 1em;
-      }
+        }
+        
+    .ml11 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    
+    }
+    
+    .ml11 .letter {
+    display: inline-block;
+    line-height: 1em;
+    }
+
+    .git-icon{
+        margin-left: 0.5em;
+    }
+    
 }

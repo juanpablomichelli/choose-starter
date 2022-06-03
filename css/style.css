@@ -77,6 +77,18 @@ header nav .bag-container .bag-img {
 header nav .bag-container .bag-img:hover {
   transform: scale(110%);
 }
+header nav .go-home {
+  position: absolute;
+  width: 2em;
+  right: 2em;
+}
+header nav .go-home .pokeball-img {
+  width: 100%;
+  transition: transform 0.15s ease-in;
+}
+header nav .go-home .pokeball-img:hover {
+  transform: scale(110%);
+}
 header nav .logo {
   display: flex;
   justify-content: center;
@@ -242,9 +254,13 @@ main .cards-container .card.ground .banner,
 main .cards-container .card.ground button:hover {
   background-color: #563c22;
 }
+main .cards-container .card.ice .name > #name-h2,
+main .cards-container .card.ice .name > p {
+  color: black;
+}
 main .cards-container .card.ice .banner,
 main .cards-container .card.ice button:hover {
-  background-color: #f1fffe;
+  background: linear-gradient(90deg, #58c6dd 0%, #ffffff 50%, #58c6dd 100%);
 }
 main .cards-container .card.normal .banner,
 main .cards-container .card.normal button:hover {
@@ -262,10 +278,45 @@ main .cards-container .card.rock .banner,
 main .cards-container .card.rock button:hover {
   background-color: #533815;
 }
+main .cards-container .card.fairy .banner,
+main .cards-container .card.fairy button:hover {
+  background-color: #be0d5a;
+}
+main .cards-container .empty-bag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .cards-container .empty-bag-container .empty-bag-text {
+  text-align: right;
+}
+main .cards-container .empty-bag-container .empty-bag-text a {
+  font-family: 'pokemonClassic', sans-serif;
+  color: #FF1B1C;
+}
+main .cards-container .empty-bag-container .missingno {
+  width: 20%;
+  filter: grayscale(1);
+  transition: transform 0.15s ease;
+}
+main .cards-container .empty-bag-container .missingno:hover {
+  transform: scale(110%);
+  transform: rotate(8deg);
+}
 footer {
-  height: 10vh;
   background-color: #FF1B1C;
-  text-align: center;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  position: relative;
+}
+footer a {
+  width: 18em;
+  height: 2em;
+  position: absolute;
 }
 footer .ml11 {
   font-family: 'pokemonClassic', sans-serif;
@@ -280,4 +331,7 @@ footer .ml11 .text-wrapper {
 footer .ml11 .letter {
   display: inline-block;
   line-height: 1em;
+}
+footer .git-icon {
+  margin-left: 0.5em;
 }

@@ -5,10 +5,6 @@ if(storedPokemons !== null){
     pokemonsId = storedPokemons;
 }
 
-// select bag counter
-const counter = document.querySelector('.pokemon-count p');
-counter.innerHTML = pokemonsId.length;
-
 // create chosenPokemons array
 let chosenPokemons = new Array();
 
@@ -89,8 +85,6 @@ const deletePokemon = (id) => {
 
 }
 
-showChosenPokemons(pokemonsId);
-
 const renderChosenPokemons = (pokemons) => {
     //select container
     const cardContainerFlex = document.querySelector('.cards-container');
@@ -162,6 +156,8 @@ const renderChosenPokemons = (pokemons) => {
         break;
         case 'rock': cloneCard.classList.add('rock');
         break;
+        case 'fairy': cloneCard.classList.add('fairy');
+        break;
       }
     }  
     
@@ -170,4 +166,84 @@ const renderChosenPokemons = (pokemons) => {
       fragments[i].appendChild(clones[i])
       cardContainerFlex.appendChild(fragments[i])    
     }
-  }
+}
+
+// if there are no chosen pokemons, show a text saying bag is empty
+
+if(pokemonsId.length === 0){
+    const p = document.createElement('p');
+    const missingno = document.createElement('img');
+    const emptyBagContainer = document.createElement('div');
+    const cardsContainer = document.querySelector('.cards-container');
+
+    p.innerHTML = `The bag is empty :( </br> <a href="index.html">Time to choose some pokemons!</a>`;
+    p.className = "empty-bag-text"
+    emptyBagContainer.appendChild(p);
+
+    missingno.setAttribute("src","https://www.latercera.com/resizer/MFg5ToGsCNsgrAQRvJ6CuEqJbOA=/800x0/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/LUOOHUM2OVEEXG7ZTRSNI6XWLY.png")
+    missingno.className = "missingno";
+    emptyBagContainer.appendChild(missingno);
+
+    emptyBagContainer.className = "empty-bag-container";
+
+    cardsContainer.appendChild(emptyBagContainer);
+
+
+}
+
+showChosenPokemons(pokemonsId);
+
+// text animation
+// Wrap every letter in a span
+var textWrapper = document.querySelector('.ml11 .letters');
+
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml11 .line',
+    scaleY: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 800
+  })
+  .add({
+    targets: '.ml11 .line',
+    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+    easing: "easeOutExpo",
+    duration: 700,
+    delay: 100
+  }).add({
+    targets: '.ml11 .letter',
+    opacity: [0,1],
+    easing: "easeOutExpo",
+    duration: 600,
+    offset: '-=775',
+    delay: (el, i) => 34 * (i+1)
+  }).add({
+    targets: '.ml11',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 6000
+  });
+
+// fade git logo
+
+function fadein(element) {
+    var op = 0.1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 65);
+}
+
+const gitLogo = document.querySelector('.git-icon');
+fadein(gitLogo)
+setInterval(function(){
+    fadein(gitLogo)
+},7400)

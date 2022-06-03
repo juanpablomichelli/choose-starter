@@ -147,6 +147,8 @@ const renderPokemons = (pokemons) => {
       break;
       case 'rock': cloneCard.classList.add('rock');
       break;
+      case 'fairy': cloneCard.classList.add('fairy');
+      break;
     }
   }  
   
@@ -193,7 +195,25 @@ anime.timeline({loop: true})
     delay: 6000
   });
 
+  // fade git logo
 
+  function fadein(element) {
+    var op = 0.1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 65);
+}
+
+const gitLogo = document.querySelector('.git-icon');
+fadein(gitLogo)
+setInterval(function(){
+    fadein(gitLogo)
+},7400)
 
   
  
