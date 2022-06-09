@@ -63,7 +63,7 @@ const fetchChosenPokemon = async(id) => {
         // Create a Pokemon object with api's data
         const pokemon = {
             name: data.name,
-            sprite: data.sprites.front_default,
+            sprite: data.sprites.other["official-artwork"].front_default,
             type: data.types[0].type.name,
             id: data.id,
             stats: {
@@ -118,6 +118,7 @@ const renderChosenPokemons = (pokemons) => {
     for (let i = 0; i < chosenPokemons.length; i++) {    
       clones[i].querySelector('.name #name-h2').innerHTML = pokemons[i].name;
       clones[i].querySelector('.img-pokemon').setAttribute('src', pokemons[i].sprite)
+      clones[i].querySelector('.img-container-bg').style.backgroundImage = `url(${pokemons[i].sprite})`;
       const cloneType = clones[i].querySelector('.type');
       cloneType.innerHTML = pokemons[i].type;
       const cloneCard = clones[i].querySelector('.card-chosen');

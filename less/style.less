@@ -404,51 +404,35 @@ main{
     .cards-container-chosen{
         height: 100%;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+        background-color: lightblue;
+        display: block;
         position: relative;
 
-        .card-chosen{            
-            width: 80%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-evenly;            
+        .card-chosen{    
+            height: 13.3vh;
+            width: 100%;
+            background-color: aquamarine;
+            display: block;                       
         
             article{
-                position: relative;
-                height: 80%;                
+                display: grid;
+                grid-template-columns: 60% 10% 20% 10%;
+                grid-template-rows: 100%;
+                height: 100%;                
                 width: 100%;
                 background-color: @secondary-color;
-                border-radius: 1rem;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-                align-items: center;
-                transition: transform 0.15s ease-in;
-                .shadowed();
-
-                &:hover{
-                    transform: scale(102%);
-
-                    .img-pokemon{
-                        transform: scale(120%);
-                    }
-                }
+                outline: 1px solid lightgray;
+                
 
                 .name{
                     display: flex;
-                    justify-content: space-between;
+                    flex-direction: column;
+                    justify-content: center;
                     text-transform: capitalize;
-                    z-index: 2;
-                    margin-bottom: 1.5em; 
 
                     #name-h2{
-                        color: @secondary-color;
+                        color: black;
                         font-size: 1em;
-                        margin-right: 0.7em;
                         font-family: @primary-font;
                     }
 
@@ -460,48 +444,58 @@ main{
                         }
                     }
                 }
-                
-                .banner{
-                    position: absolute;
-                    width: 100%;
-                    height: 13%;
-                    background-color: @primary-color;
-                    top: 0%;
-                    left: 0;
-                    border-radius: 1rem 1rem 0 0;
-                    z-index: 1;
-
-                }
-
 
                 .img-container{
-                    width: 90%;
-                    height: 50%;
+                    
+                    position: relative;
                     text-align: center;
-
-                    .img-pokemon{
-                        object-fit: contain;
+                    
+                    &-bg{
+                        background-size: cover;
+                        background-position: left center;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
                         width: 100%;
                         height: 100%;
-                        transition: transform 0.15s ease-in;
+                        z-index: 0;
+                        opacity: 0.2;
                     }
-                }
+                    .img-pokemon{    
+                        position: inherit;
+                        z-index: 100;                      
+                        width: 100%;
+                        height: 100%;                        
+                        object-fit:scale-down;       
+                        
+                    }
 
+                }
                 .stats{
+                    align-self: center;                    
                     text-align: center;
-                    width: 90%;
+                    width: 100%;
+                    height: 90%;
                     display: grid;
                     grid-template-columns: 50% 50%;
                     background-color: darken(@secondary-color,10%);
                     border-radius: 1rem;
                     padding: 10px;
-                    font-size: 0.8em;                    
+                    font-size: 0.8em;        
+                    
+                    h3{
+                        text-align: left;
+                        padding-left: 30%;
+                    }
                 }
             }
 
             button{
+                align-self: center;
+                justify-self: center;
                 height: 3em;
-                width: 50%;
+                width: 90%;
                 cursor: pointer;
                 border-radius: 0.5rem;
                 border: none;

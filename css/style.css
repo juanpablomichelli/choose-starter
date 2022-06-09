@@ -332,49 +332,34 @@ main .cards-container .spin img {
 main .cards-container-chosen {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  background-color: lightblue;
+  display: block;
   position: relative;
 }
 main .cards-container-chosen .card-chosen {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+  height: 13.3vh;
+  width: 100%;
+  background-color: aquamarine;
+  display: block;
 }
 main .cards-container-chosen .card-chosen article {
-  position: relative;
-  height: 80%;
+  display: grid;
+  grid-template-columns: 60% 10% 20% 10%;
+  grid-template-rows: 100%;
+  height: 100%;
   width: 100%;
   background-color: #FFFFFF;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  transition: transform 0.15s ease-in;
-  box-shadow: 0.2rem 0.2rem 0.5rem #a6a2a2;
-}
-main .cards-container-chosen .card-chosen article:hover {
-  transform: scale(102%);
-}
-main .cards-container-chosen .card-chosen article:hover .img-pokemon {
-  transform: scale(120%);
+  outline: 1px solid lightgray;
 }
 main .cards-container-chosen .card-chosen article .name {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   text-transform: capitalize;
-  z-index: 2;
-  margin-bottom: 1.5em;
 }
 main .cards-container-chosen .card-chosen article .name #name-h2 {
-  color: #FFFFFF;
+  color: black;
   font-size: 1em;
-  margin-right: 0.7em;
   font-family: 'pokemonClassic', sans-serif;
 }
 main .cards-container-chosen .card-chosen article .name .type {
@@ -383,30 +368,34 @@ main .cards-container-chosen .card-chosen article .name .type {
 main .cards-container-chosen .card-chosen article .name .type.fire {
   background-color: white;
 }
-main .cards-container-chosen .card-chosen article .banner {
-  position: absolute;
-  width: 100%;
-  height: 13%;
-  background-color: #FF1B1C;
-  top: 0%;
-  left: 0;
-  border-radius: 1rem 1rem 0 0;
-  z-index: 1;
-}
 main .cards-container-chosen .card-chosen article .img-container {
-  width: 90%;
-  height: 50%;
+  position: relative;
   text-align: center;
 }
-main .cards-container-chosen .card-chosen article .img-container .img-pokemon {
-  object-fit: contain;
+main .cards-container-chosen .card-chosen article .img-container-bg {
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  transition: transform 0.15s ease-in;
+  z-index: 0;
+  opacity: 0.2;
+}
+main .cards-container-chosen .card-chosen article .img-container .img-pokemon {
+  position: inherit;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
 }
 main .cards-container-chosen .card-chosen article .stats {
+  align-self: center;
   text-align: center;
-  width: 90%;
+  width: 100%;
+  height: 90%;
   display: grid;
   grid-template-columns: 50% 50%;
   background-color: #e6e6e6;
@@ -414,9 +403,15 @@ main .cards-container-chosen .card-chosen article .stats {
   padding: 10px;
   font-size: 0.8em;
 }
+main .cards-container-chosen .card-chosen article .stats h3 {
+  text-align: left;
+  padding-left: 30%;
+}
 main .cards-container-chosen .card-chosen button {
+  align-self: center;
+  justify-self: center;
   height: 3em;
-  width: 50%;
+  width: 90%;
   cursor: pointer;
   border-radius: 0.5rem;
   border: none;
