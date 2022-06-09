@@ -33,7 +33,6 @@
     fairy: rgb(190, 13, 90);
 }
 
-
 // mixins
 .shadowed{
     box-shadow: 0.2rem 0.2rem 0.5rem rgb(166, 162, 162);
@@ -151,6 +150,7 @@ main{
         display: flex;
         justify-content: space-around;
         align-items: center;
+        position: relative;
 
         .card{
             height: 90%;
@@ -367,8 +367,298 @@ main{
             }
         }
 
-        
+        .spin{
+            position: absolute;
+            margin: auto;
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes grow{
+                from{
+                    transform: scale(90%);
+                }
+                to{
+                    transform: scale(105%);
+                }
+
+            }
+
+            animation: grow 1s ease-out infinite;
+
+            img{
+                width: 4em;
+                animation: spin 1s linear infinite;     
+            }
+        }
+    
+
     }
+
+    .cards-container-chosen{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+
+        .card-chosen{            
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;            
+        
+            article{
+                position: relative;
+                height: 80%;                
+                width: 100%;
+                background-color: @secondary-color;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                transition: transform 0.15s ease-in;
+                .shadowed();
+
+                &:hover{
+                    transform: scale(102%);
+
+                    .img-pokemon{
+                        transform: scale(120%);
+                    }
+                }
+
+                .name{
+                    display: flex;
+                    justify-content: space-between;
+                    text-transform: capitalize;
+                    z-index: 2;
+                    margin-bottom: 1.5em; 
+
+                    #name-h2{
+                        color: @secondary-color;
+                        font-size: 1em;
+                        margin-right: 0.7em;
+                        font-family: @primary-font;
+                    }
+
+                    .type{
+                        padding-top: 0.3em;   
+                        
+                        &.fire{
+                            background-color: white;                            
+                        }
+                    }
+                }
+                
+                .banner{
+                    position: absolute;
+                    width: 100%;
+                    height: 13%;
+                    background-color: @primary-color;
+                    top: 0%;
+                    left: 0;
+                    border-radius: 1rem 1rem 0 0;
+                    z-index: 1;
+
+                }
+
+
+                .img-container{
+                    width: 90%;
+                    height: 50%;
+                    text-align: center;
+
+                    .img-pokemon{
+                        object-fit: contain;
+                        width: 100%;
+                        height: 100%;
+                        transition: transform 0.15s ease-in;
+                    }
+                }
+
+                .stats{
+                    text-align: center;
+                    width: 90%;
+                    display: grid;
+                    grid-template-columns: 50% 50%;
+                    background-color: darken(@secondary-color,10%);
+                    border-radius: 1rem;
+                    padding: 10px;
+                    font-size: 0.8em;                    
+                }
+            }
+
+            button{
+                height: 3em;
+                width: 50%;
+                cursor: pointer;
+                border-radius: 0.5rem;
+                border: none;
+                background-color: @secondary-color;
+                font-family: @primary-font;
+                transition: all 0.10s ease-in;
+
+                &:hover{
+                    background-color: @primary-color;
+                    color: @secondary-color;
+                }
+                
+            }
+
+            &.fire{
+                .banner, button:hover{
+                    background-color: #types-colors[fire];                
+                }
+            }
+            &.water{
+                .banner, button:hover{
+                    background-color: #types-colors[water];                    
+                }
+            }
+
+            &.grass{
+                .banner, button:hover{
+                    background-color: #types-colors[grass];                    
+                }
+            }
+            &.bug{
+                .banner, button:hover{
+                    background-color: #types-colors[bug];                    
+                }
+            }
+            &.dragon{
+                .banner, button:hover{
+                    background-color: #types-colors[dragon];                    
+                }
+            }
+            &.electric{
+                .banner, button:hover{
+                    background-color: #types-colors[electric];                    
+                }
+            }
+            &.fighting{
+                .banner, button:hover{
+                    background-color: #types-colors[fighting];                    
+                }
+            }
+            &.ghost{
+                .banner, button:hover{
+                    background-color: #types-colors[ghost];                    
+                }
+            }
+            &.ground{
+                .banner, button:hover{
+                    background-color: #types-colors[ground];                    
+                }
+            }
+            &.ice{
+                .name > #name-h2, .name > p{
+                    color: black;
+                }
+                .banner, button:hover{
+                    background: linear-gradient(90deg, rgba(88,198,221,1) 0%, rgba(255,255,255,1) 50%, rgba(88,198,221,1) 100%);
+                }
+            }
+            &.normal{
+                .banner, button:hover{
+                    background-color: #types-colors[normal];                    
+                }
+            }
+            &.poison{
+                .banner, button:hover{
+                    background-color: #types-colors[poison];                    
+                }
+            }
+            &.psychic{
+                .banner, button:hover{
+                    background-color: #types-colors[psychic];                    
+                }
+            }
+            &.rock{
+                .banner, button:hover{
+                    background-color: #types-colors[rock];    
+                }
+            }  
+            &.fairy{
+                .banner, button:hover{
+                    background-color: #types-colors[fairy];    
+                }
+            }            
+
+        }
+
+        .empty-bag-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .empty-bag-text{
+                text-align: right;
+    
+                a{
+                    font-family: @primary-font;
+                    color: @primary-color;
+                }
+            }
+    
+            .missingno{
+                width: 20%;
+                filter: grayscale(1);
+                transition: transform 0.15s ease;
+
+                &:hover{
+                    transform: scale(110%);
+                    transform: rotate(8deg)
+                }
+            }
+        }
+
+        .spin{
+            position: absolute;
+            margin: auto;
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes grow{
+                from{
+                    transform: scale(90%);
+                }
+                to{
+                    transform: scale(105%);
+                }
+
+            }
+
+            animation: grow 1s ease-out infinite;
+
+            img{
+                width: 4em;
+                animation: spin 1s linear infinite;     
+            }
+        }
+    
+
+    }
+
+
 }
 
 footer{

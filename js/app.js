@@ -1,3 +1,11 @@
+// https://github.com/apvarun/toastify-js/blob/master/README.md
+
+const spinner = document.querySelector('.spin');
+const loading = (boolean) => {
+  if(boolean) spinner.style.display = "block";
+  else spinner.style.display = "none";
+}
+
 // Number of CARDS that will be rendered
 const CARDS = 3;
 
@@ -17,7 +25,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     // fetch and paint pokemons creating random ints
     const randoms = new Array();
     for (let i = 0; i < CARDS; i++) {
-      randoms.push(getRandomInt(1,151));
+      randoms.push(getRandomInt(1,152));
     }
     fetchPokemons(randoms);
 
@@ -34,6 +42,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 const fetchPokemons = async(randoms) => {
     try{
+        loading(true)
+
         //create pokemon array
         const pokemons = new Array();
 
@@ -65,6 +75,9 @@ const fetchPokemons = async(randoms) => {
     }
     catch(error){
         console.log(error)
+    }
+    finally{
+      loading(false)
     }
 }
 
@@ -112,7 +125,23 @@ const renderPokemons = (pokemons) => {
         // reload page
         document.location.reload();
       }
-      else alert("No se pueden agregar mas pokemones");
+      else {
+        Toastify({
+          text: "Bag is full! try removing some pokemons",
+          duration: 1000,
+          destination: "bag.html",
+          newWindow: false,
+          close: true,
+          gravity: "top", // `top` or `bottom`
+          position: "left", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            color: "black",
+            background: "#FFF",
+          },
+          onClick: function(){} // Callback after click
+        }).showToast();
+      }
     })
     
     // add type class depending on pokemon type

@@ -5,6 +5,13 @@ if(storedPokemons !== null){
     pokemonsId = storedPokemons;
 }
 
+// spinner 
+const spinner = document.querySelector('.spin');
+const loading = (boolean) => {
+  if(boolean) spinner.style.display = "block";
+  else spinner.style.display = "none";
+}
+
 // create chosenPokemons array
 let chosenPokemons = new Array();
 
@@ -49,6 +56,7 @@ const showChosenPokemons = async(pokemonsId) => {
 const fetchChosenPokemon = async(id) => {
 
     try{
+        loading(true)
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         const data = await res.json();
         
@@ -71,6 +79,9 @@ const fetchChosenPokemon = async(id) => {
     catch(error){
         console.log(error); 
     } 
+    finally{
+      loading(false)
+    }
 
 }
 
@@ -87,7 +98,7 @@ const deletePokemon = (id) => {
 
 const renderChosenPokemons = (pokemons) => {
     //select container
-    const cardContainerFlex = document.querySelector('.cards-container');
+    const cardContainerFlex = document.querySelector('.cards-container-chosen');
   
     //select card-template
     const cardTemplate = document.getElementById('template-card').content;
@@ -109,7 +120,7 @@ const renderChosenPokemons = (pokemons) => {
       clones[i].querySelector('.img-pokemon').setAttribute('src', pokemons[i].sprite)
       const cloneType = clones[i].querySelector('.type');
       cloneType.innerHTML = pokemons[i].type;
-      const cloneCard = clones[i].querySelector('.card');
+      const cloneCard = clones[i].querySelector('.card-chosen');
       clones[i].querySelector('.stats').innerHTML = `<h3>Hp: </h3><p>${pokemons[i].stats.hp}</p>
       <h3>Ataque: </h3><p>${pokemons[i].stats.attack}</p>
       <h3>Especial: </h3><p>${pokemons[i].stats.special}</p>

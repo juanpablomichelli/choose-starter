@@ -126,6 +126,7 @@ main .cards-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 main .cards-container .card {
   height: 90%;
@@ -302,6 +303,240 @@ main .cards-container .empty-bag-container .missingno {
 main .cards-container .empty-bag-container .missingno:hover {
   transform: scale(110%);
   transform: rotate(8deg);
+}
+main .cards-container .spin {
+  position: absolute;
+  margin: auto;
+  animation: grow 1s ease-out infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(90%);
+  }
+  to {
+    transform: scale(105%);
+  }
+}
+main .cards-container .spin img {
+  width: 4em;
+  animation: spin 1s linear infinite;
+}
+main .cards-container-chosen {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+main .cards-container-chosen .card-chosen {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+main .cards-container-chosen .card-chosen article {
+  position: relative;
+  height: 80%;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: transform 0.15s ease-in;
+  box-shadow: 0.2rem 0.2rem 0.5rem #a6a2a2;
+}
+main .cards-container-chosen .card-chosen article:hover {
+  transform: scale(102%);
+}
+main .cards-container-chosen .card-chosen article:hover .img-pokemon {
+  transform: scale(120%);
+}
+main .cards-container-chosen .card-chosen article .name {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  z-index: 2;
+  margin-bottom: 1.5em;
+}
+main .cards-container-chosen .card-chosen article .name #name-h2 {
+  color: #FFFFFF;
+  font-size: 1em;
+  margin-right: 0.7em;
+  font-family: 'pokemonClassic', sans-serif;
+}
+main .cards-container-chosen .card-chosen article .name .type {
+  padding-top: 0.3em;
+}
+main .cards-container-chosen .card-chosen article .name .type.fire {
+  background-color: white;
+}
+main .cards-container-chosen .card-chosen article .banner {
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  background-color: #FF1B1C;
+  top: 0%;
+  left: 0;
+  border-radius: 1rem 1rem 0 0;
+  z-index: 1;
+}
+main .cards-container-chosen .card-chosen article .img-container {
+  width: 90%;
+  height: 50%;
+  text-align: center;
+}
+main .cards-container-chosen .card-chosen article .img-container .img-pokemon {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.15s ease-in;
+}
+main .cards-container-chosen .card-chosen article .stats {
+  text-align: center;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: #e6e6e6;
+  border-radius: 1rem;
+  padding: 10px;
+  font-size: 0.8em;
+}
+main .cards-container-chosen .card-chosen button {
+  height: 3em;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #FFFFFF;
+  font-family: 'pokemonClassic', sans-serif;
+  transition: all 0.1s ease-in;
+}
+main .cards-container-chosen .card-chosen button:hover {
+  background-color: #FF1B1C;
+  color: #FFFFFF;
+}
+main .cards-container-chosen .card-chosen.fire .banner,
+main .cards-container-chosen .card-chosen.fire button:hover {
+  background-color: #FF1B1C;
+}
+main .cards-container-chosen .card-chosen.water .banner,
+main .cards-container-chosen .card-chosen.water button:hover {
+  background-color: #38bace;
+}
+main .cards-container-chosen .card-chosen.grass .banner,
+main .cards-container-chosen .card-chosen.grass button:hover {
+  background-color: #7fe660;
+}
+main .cards-container-chosen .card-chosen.bug .banner,
+main .cards-container-chosen .card-chosen.bug button:hover {
+  background-color: #d4a633;
+}
+main .cards-container-chosen .card-chosen.dragon .banner,
+main .cards-container-chosen .card-chosen.dragon button:hover {
+  background-color: #f69636;
+}
+main .cards-container-chosen .card-chosen.electric .banner,
+main .cards-container-chosen .card-chosen.electric button:hover {
+  background-color: #fbe330;
+}
+main .cards-container-chosen .card-chosen.fighting .banner,
+main .cards-container-chosen .card-chosen.fighting button:hover {
+  background-color: #987a56;
+}
+main .cards-container-chosen .card-chosen.ghost .banner,
+main .cards-container-chosen .card-chosen.ghost button:hover {
+  background-color: #5e5e5e;
+}
+main .cards-container-chosen .card-chosen.ground .banner,
+main .cards-container-chosen .card-chosen.ground button:hover {
+  background-color: #563c22;
+}
+main .cards-container-chosen .card-chosen.ice .name > #name-h2,
+main .cards-container-chosen .card-chosen.ice .name > p {
+  color: black;
+}
+main .cards-container-chosen .card-chosen.ice .banner,
+main .cards-container-chosen .card-chosen.ice button:hover {
+  background: linear-gradient(90deg, #58c6dd 0%, #ffffff 50%, #58c6dd 100%);
+}
+main .cards-container-chosen .card-chosen.normal .banner,
+main .cards-container-chosen .card-chosen.normal button:hover {
+  background-color: #c0c0c0;
+}
+main .cards-container-chosen .card-chosen.poison .banner,
+main .cards-container-chosen .card-chosen.poison button:hover {
+  background-color: #910b66;
+}
+main .cards-container-chosen .card-chosen.psychic .banner,
+main .cards-container-chosen .card-chosen.psychic button:hover {
+  background-color: #f93fe1;
+}
+main .cards-container-chosen .card-chosen.rock .banner,
+main .cards-container-chosen .card-chosen.rock button:hover {
+  background-color: #533815;
+}
+main .cards-container-chosen .card-chosen.fairy .banner,
+main .cards-container-chosen .card-chosen.fairy button:hover {
+  background-color: #be0d5a;
+}
+main .cards-container-chosen .empty-bag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .cards-container-chosen .empty-bag-container .empty-bag-text {
+  text-align: right;
+}
+main .cards-container-chosen .empty-bag-container .empty-bag-text a {
+  font-family: 'pokemonClassic', sans-serif;
+  color: #FF1B1C;
+}
+main .cards-container-chosen .empty-bag-container .missingno {
+  width: 20%;
+  filter: grayscale(1);
+  transition: transform 0.15s ease;
+}
+main .cards-container-chosen .empty-bag-container .missingno:hover {
+  transform: scale(110%);
+  transform: rotate(8deg);
+}
+main .cards-container-chosen .spin {
+  position: absolute;
+  margin: auto;
+  animation: grow 1s ease-out infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(90%);
+  }
+  to {
+    transform: scale(105%);
+  }
+}
+main .cards-container-chosen .spin img {
+  width: 4em;
+  animation: spin 1s linear infinite;
 }
 footer {
   background-color: #FF1B1C;
