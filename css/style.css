@@ -142,11 +142,11 @@ main .cards-container .card article {
   width: 100%;
   background-color: #FFFFFF;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 70% 20%;
   transition: transform 0.15s ease-in;
+  overflow: auto;
   box-shadow: 0.2rem 0.2rem 0.5rem #a6a2a2;
 }
 main .cards-container .card article:hover {
@@ -155,38 +155,37 @@ main .cards-container .card article:hover {
 main .cards-container .card article:hover .img-pokemon {
   transform: scale(120%);
 }
-main .cards-container .card article .name {
+main .cards-container .card article .banner {
+  width: 100%;
+  height: 100%;
+  background-color: #FF1B1C;
+  border-radius: 1rem 1rem 0 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .cards-container .card article .banner .name {
   display: flex;
   justify-content: space-between;
   text-transform: capitalize;
   z-index: 2;
-  margin-bottom: 1.5em;
 }
-main .cards-container .card article .name #name-h2 {
+main .cards-container .card article .banner .name #name-h2 {
   color: #FFFFFF;
   font-size: 1em;
   margin-right: 0.7em;
   font-family: 'pokemonClassic', sans-serif;
 }
-main .cards-container .card article .name .type {
+main .cards-container .card article .banner .name .type {
   padding-top: 0.3em;
 }
-main .cards-container .card article .name .type.fire {
+main .cards-container .card article .banner .name .type.fire {
   background-color: white;
 }
-main .cards-container .card article .banner {
-  position: absolute;
-  width: 100%;
-  height: 13%;
-  background-color: #FF1B1C;
-  top: 0%;
-  left: 0;
-  border-radius: 1rem 1rem 0 0;
-  z-index: 1;
-}
 main .cards-container .card article .img-container {
-  width: 90%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
 main .cards-container .card article .img-container .img-pokemon {
@@ -197,11 +196,11 @@ main .cards-container .card article .img-container .img-pokemon {
 }
 main .cards-container .card article .stats {
   text-align: center;
-  width: 90%;
+  width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
   background-color: #e6e6e6;
-  border-radius: 1rem;
+  border-radius: 0 0 1rem 1rem;
   padding: 10px;
   font-size: 0.8em;
 }
@@ -332,7 +331,6 @@ main .cards-container .spin img {
 main .cards-container-chosen {
   height: 100%;
   width: 100%;
-  background-color: lightblue;
   display: block;
   position: relative;
 }
@@ -491,6 +489,7 @@ main .cards-container-chosen .empty-bag-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 main .cards-container-chosen .empty-bag-container .empty-bag-text {
   text-align: right;
@@ -564,4 +563,85 @@ footer .ml11 .letter {
 }
 footer .git-icon {
   margin-left: 0.5em;
+}
+@media (max-width: 1770px) {
+  main .cards-container .card {
+    width: 30%;
+  }
+}
+@media (max-width: 912px) {
+  main .cards-container-chosen .card-chosen article {
+    grid-template-columns: 45% 15% 25% 15%;
+  }
+}
+@media (max-width: 820px) {
+  main {
+    overflow: scroll;
+  }
+  main .cards-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  main .cards-container .card {
+    height: 100%;
+    width: 80%;
+  }
+  main .cards-container .spin {
+    position: relative;
+  }
+  main .cards-container-chosen .card-chosen article {
+    grid-template-columns: 45% 15% 25% 15%;
+  }
+}
+@media (max-width: 588px) {
+  header nav {
+    justify-content: space-around;
+  }
+  header nav h1 {
+    font-size: 0.9em;
+    margin-right: 1.1em;
+    text-align: center;
+  }
+  header nav .logo {
+    margin: 0 0 0 0;
+  }
+  header nav .bag-container {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+  header nav .bag-container .pokemon-count {
+    right: 1.5em;
+  }
+  header nav#bag-nav .go-home {
+    position: relative;
+    right: 0%;
+  }
+  header nav#bag-nav h1 {
+    margin-right: 0;
+  }
+  main .cards-container-chosen .card-chosen article {
+    grid-template-columns: 20% 25% 36% 19%;
+  }
+  main .cards-container-chosen .card-chosen article .name {
+    text-align: center;
+    font-size: 0.8em;
+  }
+  main .cards-container-chosen .card-chosen article .img-container-bg {
+    display: none;
+  }
+  main .cards-container-chosen .card-chosen article .stats {
+    padding: 3px;
+    font-size: 0.6em;
+  }
+  main .cards-container-chosen .card-chosen button {
+    font-size: 0.5em;
+  }
+  main .cards-container .card article {
+    grid-template-rows: 10% 60% 30%;
+  }
+  footer {
+    font-size: 0.8em;
+  }
 }

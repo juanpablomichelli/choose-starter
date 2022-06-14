@@ -183,24 +183,22 @@ const renderChosenPokemons = (pokemons) => {
 // if there are no chosen pokemons, show a text saying bag is empty
 
 if(pokemonsId.length === 0){
-    const p = document.createElement('p');
-    const missingno = document.createElement('img');
-    const emptyBagContainer = document.createElement('div');
-    const cardsContainer = document.querySelector('.cards-container');
+  const p = document.createElement('p');
+  const missingno = document.createElement('img');
+  const emptyBagContainer = document.createElement('div');
+  const cardsContainer = document.querySelector('.cards-container-chosen');
 
-    p.innerHTML = `The bag is empty :( </br> <a href="index.html">Time to choose some pokemons!</a>`;
-    p.className = "empty-bag-text"
-    emptyBagContainer.appendChild(p);
+  p.innerHTML = `The bag is empty :( </br> <a href="index.html">Time to choose some pokemons!</a>`;
+  p.className = "empty-bag-text"
+  emptyBagContainer.appendChild(p);
 
-    missingno.setAttribute("src","https://www.latercera.com/resizer/MFg5ToGsCNsgrAQRvJ6CuEqJbOA=/800x0/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/LUOOHUM2OVEEXG7ZTRSNI6XWLY.png")
-    missingno.className = "missingno";
-    emptyBagContainer.appendChild(missingno);
+  missingno.setAttribute("src","https://www.latercera.com/resizer/MFg5ToGsCNsgrAQRvJ6CuEqJbOA=/800x0/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/LUOOHUM2OVEEXG7ZTRSNI6XWLY.png")
+  missingno.className = "missingno";
+  emptyBagContainer.appendChild(missingno);
 
-    emptyBagContainer.className = "empty-bag-container";
+  emptyBagContainer.className = "empty-bag-container";
 
-    cardsContainer.appendChild(emptyBagContainer);
-
-
+  cardsContainer.appendChild(emptyBagContainer);
 }
 
 showChosenPokemons(pokemonsId);
